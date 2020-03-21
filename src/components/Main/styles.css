@@ -1,0 +1,46 @@
+.main {
+  display: grid;
+  grid-template-columns: 350px auto;
+  min-height: 100vh;
+}
+
+.main__user {
+  width: 100%;
+}
+
+.main__aside {
+  
+  background-color: var(--color-bg-secondary);
+}
+
+.main__search {
+  width: 370px;
+}
+
+.main__list-item {
+  border-radius: var(--control-radius);
+}
+
+.main__list-item:hover, .main__list-item_view_active {
+  background-color: var(--color-bg-ghost);
+}
+
+.main__list-item:not(.main__list-item_view_active):hover {
+  background-color: var(--color-bg-stripe);
+  cursor: pointer;
+}
+
+.main__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.main__table .main__table-head {
+  background: none !important;
+}
+
+.main__table .main__table-item:hover {
+  cursor: pointer;
+  background: var(--color-bg-ghost) !important;
+  transition: background 0.12s;
+}
