@@ -9,7 +9,7 @@
 }
 
 .main__aside {
-  
+  position: relative;
   background-color: var(--color-bg-secondary);
 }
 
@@ -43,4 +43,10 @@
   cursor: pointer;
   background: var(--color-bg-ghost) !important;
   transition: background 0.12s;
+}
+
+.main__themer {
+  position: fixed;
+  bottom: var(--space-xl);
+  width: 302px;
 }

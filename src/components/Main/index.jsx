@@ -56,8 +56,14 @@ const Main = (props) => {
           <Button wpSize='m' view='primary' width='full'>Создать новый проект</Button>
         </div>
         <div className={d({'indent-b': 'xs'})}>
-          <Button wpSize='m' view='ghost' width='full' onClick={ changeTheme }>
+          <Button wpSize='m' view='ghost' width='full'>
             Открыть проект
+          </Button>
+        </div>
+
+        <div className={ b('themer') }>
+          <Button wpSize='m' view='clear' width='full' onClick={ changeTheme }>
+            Сменить тему
           </Button>
         </div>
       </div>
