@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import block from 'bem-cn';
 import { Button, Text, ChoiceGroup, Input, Textarea, User, IconClose } from '@gpn-design/uikit';
 import { ThemeContext } from '../../context/ThemeContext';
@@ -24,6 +24,9 @@ const tableData = [
 const Main = (props) => {
   const { className } = props;
   const { changeTheme } = useContext(ThemeContext);
+  const [ isOpen, setPopup ] = useState(0);
+
+  // const openPopup = () => setPopup
 
   return (
     <div className={b()}>
@@ -55,7 +58,9 @@ const Main = (props) => {
         </div>
 
         <div className={d({'indent-b': 'xs'})}>
-          <Button wpSize='m' view='primary' width='full'>Создать новый проект</Button>
+          <Button wpSize='m' view='primary' width='full' onClick={ () => setPopup(!isOpen) }>
+            Создать новый проект
+          </Button>
         </div>
         <div className={d({'indent-b': 'xs'})}>
           <Button wpSize='m' view='ghost' width='full'>
@@ -156,15 +161,18 @@ const Main = (props) => {
         
       </div>
 
-      <div className={popup()}>
+      <div className={popup({ opened: isOpen ? true : false })}>
         <div className={ b('popup').mix(popup('window')) }>
           <header className={ popup('header').mix( d({'distribute': 'center', 'vertical-align': 'center'}) ) }>
             <Text tag='p' size='xs' view='primary' align='center'>Запрос доступа</Text>
-            <Button wpSize='xs' view='clear' iconOnly={true} form='brick' className={ popup('close') }>
+            <Button wpSize='xs' view='clear' iconOnly={true} form='brick' 
+              className={ popup('close') } 
+              onClick={ () => setPopup(!isOpen) }
+            >
               <IconClose size='s' />
             </Button>
           </header>
-          <div className={ popup('main').mix( [form({'space-v': 'xs'}), d({'space-a': 'm'})] ) }>
+          <div className={ popup('main').mix( [form({'space-v': 'xs'}), d({'space-a': 'm', 'space-b': 'xl'})] ) }>
             <div className={ form('item') }>
               <Text tag='p' size='s' view='secondary' className={d({'indent-b': '2xs'})}>Название проекта</Text>
               <Input view='default' wpSize='s' placeholder='Приобское' className={popup('input')} />
@@ -179,13 +187,13 @@ const Main = (props) => {
             </div>
             <div className={ form('item').mix( d({'distribute': 'right'}) ) }>
               <div className={d({'indent-r': 's'})}>
-                <Button wpSize='s' view='primary'>Запросить доступ</Button>
+                <Button wpSize='s' view='primary' onClick={ () => setPopup(!isOpen) }>Запросить доступ</Button>
               </div>
-              <Button wpSize='s' view='ghost'>Отмена</Button>
+              <Button wpSize='s' view='ghost' onClick={ () => setPopup(!isOpen) }>Отмена</Button>
             </div>
           </div>
         </div>
-        <div className={popup('tone')}></div>
+        <div className={popup('tone')} onClick={ () => setPopup(!isOpen) }></div>
       </div>
     </div>
   )
