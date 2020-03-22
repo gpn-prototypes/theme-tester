@@ -50,3 +50,31 @@
   bottom: var(--space-xl);
   width: 302px;
 }
+
+.main__popup {
+  width: 480px;
+  background-color: var(--color-bg-default);
+}
+
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: var(--control-radius);
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+
+.popup__header {
+  position: relative;
+  height: 24px;
+  background-color: var(--color-bg-secondary);
+}
+
+.popup__header .popup__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.popup__input { width: 100%; }

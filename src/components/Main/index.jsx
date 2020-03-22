@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import block from 'bem-cn';
-import { Button, Text, ChoiceGroup, Input, User } from '@gpn-design/uikit';
+import { Button, Text, ChoiceGroup, Input, Textarea, User, IconClose } from '@gpn-design/uikit';
 import { ThemeContext } from '../../context/ThemeContext';
 
 import './styles.css';
 
 const b = block('main');
+const popup = block('popup');
 const d = block('decorator');
 const ls = block('pt-list');
 const tb = block('pt-table');
+const form = block('pt-form');
 
 const tableData = [
   { name: 'Приобское', src: 'Приобское', role: 'Геолог', author: 'Мария Дымочкина', made: '12 февраля 2020' },
@@ -151,6 +153,39 @@ const Main = (props) => {
             })}
           </tbody>
         </table>
+        
+      </div>
+
+      <div className={popup()}>
+        <div className={ b('popup').mix(popup('window')) }>
+          <header className={ popup('header').mix( d({'distribute': 'center', 'vertical-align': 'center'}) ) }>
+            <Text tag='p' size='xs' view='primary' align='center'>Запрос доступа</Text>
+            <Button wpSize='xs' view='clear' iconOnly={true} form='brick' className={ popup('close') }>
+              <IconClose size='s' />
+            </Button>
+          </header>
+          <div className={ popup('main').mix( [form({'space-v': 'xs'}), d({'space-a': 'm'})] ) }>
+            <div className={ form('item') }>
+              <Text tag='p' size='s' view='secondary' className={d({'indent-b': '2xs'})}>Название проекта</Text>
+              <Input view='default' wpSize='s' placeholder='Приобское' className={popup('input')} />
+            </div>
+            <div className={ form('item') }>
+              <Text tag='p' size='s' view='secondary' className={d({'indent-b': '2xs'})}>Название проекта</Text>
+              <Input view='default' wpSize='s' placeholder='Только для просмотра' className={popup('input')} />
+            </div>
+            <div className={ form('item') }>
+              <Text tag='p' size='s' view='secondary' className={d({'indent-b': '2xs'})}>Название проекта</Text>
+              <Textarea view='default' wpSize='s' placeholder='Опишите кратко, для каких целей вам необходим доступ к текущему проекту' className={popup('input')} />
+            </div>
+            <div className={ form('item').mix( d({'distribute': 'right'}) ) }>
+              <div className={d({'indent-r': 's'})}>
+                <Button wpSize='s' view='primary'>Запросить доступ</Button>
+              </div>
+              <Button wpSize='s' view='ghost'>Отмена</Button>
+            </div>
+          </div>
+        </div>
+        <div className={popup('tone')}></div>
       </div>
     </div>
   )
